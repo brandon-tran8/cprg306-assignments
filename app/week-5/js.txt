@@ -1,0 +1,63 @@
+Arrays
+- Creating, accessing, modifying
+- Methods: map, filter, sort, reduce
+
+// Create Arrays
+const arr = [];
+
+// modifying Arrays
+arr[0] = 5;
+arr[1] = 6;
+arr[2] = 7;
+
+
+// accessing Arrays
+console.log(arr[0]); //5
+
+// Creating Arrays with values
+const arr2 = [5, 6, 7];
+
+
+
+// Methods
+// maps
+// map function takes a callback function as an argument and returns a new array 
+with the results of calling the callback function on each element in the array
+
+arr; // [5, 6, 7]
+
+const arr3 = arr.map((num) => return num * 2);
+arr3; // [10, 12, 14]
+
+// filter
+filter function takes a callback function as an argument and returns a new array
+with all the element that past the test implemented by the provided function
+
+const arr4 = arr.filter((num) => num > 5);
+array4; // [6, 7]
+
+
+// reduce 
+// reduce function takes a callback function as an argument and returns a single value. 
+An accumulator is used to store thr result of the callback function
+
+const total = arr.reduce((acc, num) = > acc + num, 0);
+total; //18
+
+
+//sort 
+// sort function takes callback function as an argument and modifies the array in place. 
+Callback function should return a negative number if first argument should come before the second,
+a positive number if first argument should come after the second, and 0 if they are equal.
+
+arr[3] = 1;
+arr.sort((a, b) => a - b);
+arr; // [1, 5, 6, 7]
+
+arr.sort((a, b) => {if (a < b)})
+
+onclick = {() => handleClick()}
+
+// or 
+
+handleClick
