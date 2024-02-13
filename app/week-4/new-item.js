@@ -13,11 +13,11 @@ export default function NewItem() {
         const item = {
             name,
             quantity,
-            category,
+            category
         }; 
         console.log(item); 
 
-        alert("Item Added: " + name + ", quantity: " + quantity + ", category: " + category);
+        alert(`Name: ${name}, quantity: ${quantity}, category: ${category}`);
 
         setName("");
         setQuantity(1);
