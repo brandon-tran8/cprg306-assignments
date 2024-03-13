@@ -30,6 +30,8 @@ export default function ItemList({ items }) {
     return sortedItems;
   };
 
+  //const sortedItems = sortItems();
+
   const handleSortByName = () => {
     setSortBy("name");
     //sortItems();
@@ -59,7 +61,7 @@ export default function ItemList({ items }) {
           Category
         </button>
       </div>
-      {sortItems().map((item) => (
+      {sortedItems.map((item) => (
         <Item key={item.id} {...item} />
       ))}
     </div>
