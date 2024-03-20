@@ -10,22 +10,22 @@ export default function Page() {
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
 
   // Sign in to Firebase with GitHub authentication
-  async function handleSignIn() {
-    try {
-      await gitHubSignIn();
-    } catch (error) {
-      console.error("Error signing in, Please try again: ", error);
-    }
-  }
+  //   async function handleSignIn() {
+  //     try {
+  //       await gitHubSignIn();
+  //     } catch (error) {
+  //       console.error("Error signing in, Please try again: ", error);
+  //     }
+  //   }
 
-  // Sign out of Firebase
-  async function handleSignOut() {
-    try {
-      await firebaseSignOut();
-    } catch (error) {
-      console.error("Error signing out: ", error);
-    }
-  }
+  //   // Sign out of Firebase
+  //   async function handleSignOut() {
+  //     try {
+  //       await firebaseSignOut();
+  //     } catch (error) {
+  //       console.error("Error signing out: ", error);
+  //     }
+  //   }
 
   // Display some of the user's information
   return (
@@ -36,12 +36,12 @@ export default function Page() {
             <p>
               Welcome, {user.displayName} ({user.email})
             </p>
-            <button onClick={handleSignOut}>Sign Out</button>
+            <button onClick={() => firebaseSignOut()}>Sign Out</button>
           </div>
         ) : (
           <div>
             <p>You are not logged in.</p>
-            <button onClick={handleSignIn}>Sign In with GitHub</button>
+            <button onClick={() => gitHubSignIn()}>Sign In with GitHub</button>
           </div>
         )}
         <p>
