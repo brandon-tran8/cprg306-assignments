@@ -6,30 +6,10 @@ import React from "react";
 import Link from "next/link";
 
 export default function Page() {
-  // Use the useUserAuth hook to get the user object and the login and logout functions
   const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
 
-  // Sign in to Firebase with GitHub authentication
-  //   async function handleSignIn() {
-  //     try {
-  //       await gitHubSignIn();
-  //     } catch (error) {
-  //       console.error("Error signing in, Please try again: ", error);
-  //     }
-  //   }
-
-  //   // Sign out of Firebase
-  //   async function handleSignOut() {
-  //     try {
-  //       await firebaseSignOut();
-  //     } catch (error) {
-  //       console.error("Error signing out: ", error);
-  //     }
-  //   }
-
-  // Display some of the user's information
   return (
-    <>
+    <main>
       <div>
         {user ? (
           <div>
@@ -48,6 +28,6 @@ export default function Page() {
           <Link href="/week-8/shopping-list">Go to Shopping List</Link>
         </p>
       </div>
-    </>
+    </main>
   );
 }
