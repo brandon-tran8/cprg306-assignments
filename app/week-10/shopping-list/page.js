@@ -1,23 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ItemList from "./item-list";
 import NewItem from "./new-item";
 import MealIdeas from "./meal-ideas";
-import itemsData from "./items.json";
 import { useUserAuth } from "../_utils/auth-context";
+import { getItems, addItem } from "../_services/shopping-list-service";
 
 export default function Page() {
-  const [items, setItems] = useState(itemsData);
+  const [items, setItems] = useState([]);
   const [selectedItemName, setSelectedItemName] = useState("");
   const { user } = useUserAuth();
+
+  useEffect(() => {
+    const loadItems = async () => {
+      try {
+        if (user) {
+          const userItems = await getItems(user.uid);
+          setItems(userItems);
+        }
+      } catch (error) {
+        console.error("Error loading items:", error);
+      }
+    };
+
+    loadItems();
+  }, [user]);
 
   if (!user) {
     return <p>NEED TO LOGIN!!</p>;
   }
 
-  const handleAddItem = (newItem) => {
-    setItems([...items, newItem]);
+  const handleAddItem = async (newItem) => {
+    try {
+      const newItemId = await addItem(user.uid, newItem);
+      const newItemWithId = { ...newItem, id: newItemId };
+      setItems([...items, newItemWithId]);
+    } catch (error) {
+      console.error("Error adding item:", error);
+    }
   };
 
   const handleItemSelect = (itemName) => {
@@ -28,7 +49,6 @@ export default function Page() {
         /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
         ""
       );
-    // Update selectedItemName state
     setSelectedItemName(cleanedItemName);
   };
 

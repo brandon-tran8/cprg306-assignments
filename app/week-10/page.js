@@ -25,7 +25,7 @@ export default function Page() {
           </div>
         )}
         <p>
-          <Link href="/week-8/shopping-list">Go to Shopping List</Link>
+          <Link href="/week-10/shopping-list">Go to Shopping List</Link>
         </p>
       </div>
     </main>
